@@ -4,7 +4,7 @@ import { getSortedList } from '../lib/data';
 import Layout from '../components/layout';
 
 export async function getStaticProps() {
-  const allData = getSortedList();
+  const allData = await getSortedList();
   return {
     props: {
       allData
@@ -17,7 +17,7 @@ export default function Home({ allData }) {
         <h1 class="text-center">List of Names</h1>
         <div className="list-group text-center">
           {allData.map(({ id, name }) => (
-            <Link key={id} href={`/${id}`}>
+            <Link legacyBehavior key={id} href={`/${id}`}>
               <a className="list-group-item list-group-item-action">{name}</a>
             </Link>
           ))}

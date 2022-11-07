@@ -17,6 +17,8 @@ export async function getStaticProps({ params }) {
 //this function just returns an array of ids in a particular way with those params in it
 export async function getStaticPaths() {
   const paths = getAllIds();
+
+  console.log(paths);
   return {
     paths,
     fallback: false
