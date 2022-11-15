@@ -14,7 +14,7 @@ export async function getStaticProps() {
 export default function Home({ allData }) {
   return (
 <Layout home>
-        <h1 class="text-center">List of Names</h1>
+        <h1 class="text-center">WordPress Posts</h1>
         <div className="list-group text-center">
           {allData.map(({ id, name }) => (
             <Link legacyBehavior key={id} href={`/${id}`}>

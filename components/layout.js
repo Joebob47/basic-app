@@ -16,7 +16,7 @@ export default function Layout( { children, home } ) {
       <main>{children}</main>
       {!home && (
       <div class="text-center">
-          <Link href="/">
+          <Link legacyBehavior href="/">
             <a class="btn btn-primary mt-3">← Back to home</a>
           </Link>
         </div>
