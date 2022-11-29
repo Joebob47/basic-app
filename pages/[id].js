@@ -29,12 +29,34 @@ export async function getStaticPaths() {
 //itemData here will be the entire chunk of info for the specific id
 //THIS FORMAT IS CONFUSING TO ME
 export default function Entry({ itemData }) {
-  let noTagString = itemData[0].post_content;
+  let splitData = itemData[0].acf_fields.split(",");
+  console.log("THIS IS SPLIT DATA 0: " + splitData[0]);
+  return (
+      <Layout>
+      <article className="card col-6 mx-auto text-center">
+        <h1> {itemData[0].post_title} </h1>
+        <div className="card-body">
+        <p className="card-text">{itemData[0].post_content}</p>
+          <p className="card-text">{splitData[2]}</p>
+          <p className="card-text">{splitData[4]}</p>
+          <h6 className="card-subtitle mb-2 text-muted">Post Status: {itemData[0].post_status}</h6>
+        </div>
+        
+      </article>
+    </Layout>
+  );
+}
+
+{/*    ABOVE RETURN STATEMENT
+let noTagString = itemData[0].post_content;
   noTagString=noTagString.replace('<!-- wp:paragraph -->','');
   noTagString=noTagString.replace('<p>','');
   noTagString=noTagString.replace('</p>','');
   noTagString=noTagString.replace('<!-- /wp:paragraph -->','');
-  return (
+  */
+}
+
+    {/* IN RETURN STATEMENT
     <Layout>
       <article className="card col-6 mx-auto text-center">
         <h1> {itemData[0].post_title} </h1>
@@ -46,5 +68,4 @@ export default function Entry({ itemData }) {
         
       </article>
     </Layout>
-  );
-}
+  */}
