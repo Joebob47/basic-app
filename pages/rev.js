@@ -1,9 +1,17 @@
+import Link from 'next/link';
+import { getSortedList } from '../lib/data';
 import Layout from '../components/layout';
-import 'bootstrap/dist/css/bootstrap.css';
 
-export default function Home() {
+export async function getStaticProps() {
+  const allData = await getSortedList();
+  return {
+    props: {
+      allData
+    }
+  }
+}
+export default function Home({ allData }) {
   return (
-    
 <Layout home>
 <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -14,10 +22,10 @@ export default function Home() {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/rev">Reviews</a>
+          <a class="nav-link active" href="/rev">Reviews</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/positive">Positive Reviews</a>
@@ -30,27 +38,11 @@ export default function Home() {
   </div>
 </nav>
       </header>
-      <h1 class="text-center mt-4">Working with Wordpress API, NextJS, and React</h1>
-      <div class="text-center">
-      <img src='/siteLogo.jpg' alt='Logo for Site' width="20%" height="20%"/>
-      </div>
-
-    <p class="text-center mb-4"> This application uses React and NextJS to display current data 
-    from the WordPress API. The data displayed is created from custom fields in WordPress by me. 
-    </p>
-</Layout>
-  );
-}
-
-/*
-export default function Home({ allData }) {
-  return (
-<Layout home>
-        <h1 class="text-center">WordPress Custom Post Types from WordPress API</h1>
+        <h1 class="text-center">Reviews</h1>
         <div className="list-group text-center">
           {allData.map(({ id, name }) => (
             
-            <Link legacyBehavior key={id} href={`/${id}`}>
+            <Link legacyBehavior key={id} href={`/rev/${id}`}>
               <a className="list-group-item list-group-item-action">{name}</a>
             </Link>
             
@@ -59,4 +51,3 @@ export default function Home({ allData }) {
 </Layout>
   );
 }
-*/

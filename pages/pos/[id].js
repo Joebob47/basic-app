@@ -1,6 +1,5 @@
-import Head from 'next/head';
-import Layout from '../components/layout';
-import {getAllIds, getData} from '../lib/data';
+import Layout from '../../components/layout';
+import {getAllIds, getData} from '../../lib/dataPos';
 
 //create an instance of getStaticProps to return data for one person
 export async function getStaticProps({ params }) {
@@ -9,7 +8,8 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       itemData
-    }
+    },
+    revalidate:60
   };
 }
 
@@ -39,6 +39,7 @@ export default function Entry({ itemData }) {
         <p className="card-text">{itemData[0].post_content}</p>
           <p className="card-text">{splitData[2]}</p>
           <p className="card-text">{splitData[4]}</p>
+          <p className="card-text">{splitData[6]}</p>
           <h6 className="card-subtitle mb-2 text-muted">Post Status: {itemData[0].post_status}</h6>
         </div>
         
@@ -46,26 +47,3 @@ export default function Entry({ itemData }) {
     </Layout>
   );
 }
-
-{/*    ABOVE RETURN STATEMENT
-let noTagString = itemData[0].post_content;
-  noTagString=noTagString.replace('<!-- wp:paragraph -->','');
-  noTagString=noTagString.replace('<p>','');
-  noTagString=noTagString.replace('</p>','');
-  noTagString=noTagString.replace('<!-- /wp:paragraph -->','');
-  */
-}
-
-    {/* IN RETURN STATEMENT
-    <Layout>
-      <article className="card col-6 mx-auto text-center">
-        <h1> {itemData[0].post_title} </h1>
-        <div className="card-body">
-          <p className="card-text">{noTagString}</p>
-          <h6 className="card-subtitle mb-2 text-muted">Last modified: {itemData[0].post_modified}</h6>
-          <a href={'mailto:' + itemData[0].email} className="card-link">{itemData[0].email}</a>
-        </div>
-        
-      </article>
-    </Layout>
-  */}
