@@ -5,7 +5,7 @@ export default function Home() {
   return (
     
 <Layout home>
-<header>
+<header className="marginMe">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@ export default function Home() {
       </header>
       <h1 class="text-center mt-4">Working with Wordpress API, NextJS, and React</h1>
       <div class="text-center">
-      <img src='/siteLogo.jpg' alt='Logo for Site' width="20%" height="20%"/>
+      <img class="img-fluid" src='/siteLogo.jpg' alt='Logo for Site' width="20%" height="20%"/>
       </div>
 
     <p class="text-center mb-4"> This application uses React and NextJS to display current data 

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getSortedList } from '../lib/data';
 import Layout from '../components/layout';
+import 'bootstrap/dist/css/bootstrap.css';
 
 export async function getStaticProps() {
   const allData = await getSortedList();
@@ -13,7 +14,7 @@ export async function getStaticProps() {
 export default function Home({ allData }) {
   return (
 <Layout home>
-<header>
+<header className="marginMe">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +40,7 @@ export default function Home({ allData }) {
 </nav>
       </header>
         <h1 class="text-center">Reviews</h1>
-        <div className="list-group text-center">
+        <div className="list-group text-center makeThin">
           {allData.map(({ id, name }) => (
             
             <Link legacyBehavior key={id} href={`/rev/${id}`}>

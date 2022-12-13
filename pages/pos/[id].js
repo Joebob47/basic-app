@@ -33,7 +33,7 @@ export default function Entry({ itemData }) {
   console.log("THIS IS SPLIT DATA 0: " + splitData[0]);
   return (
       <Layout>
-      <article className="card col-6 mx-auto text-center">
+      <article className="card col-6 mx-auto text-center marginTop">
         <h1> {itemData[0].post_title} </h1>
         <div className="card-body">
         <p className="card-text">{itemData[0].post_content}</p>

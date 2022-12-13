@@ -14,8 +14,8 @@ export default function Layout( { children, home } ) {
       <main>{children}</main>
       {!home && (
       <div class="text-center">
-          <Link legacyBehavior href="/">
-            <a class="btn btn-primary mt-3">← Back to home</a>
+          <Link legacyBehavior href="javascript:history.go(-1)">
+            <button class="blueButton btn btn-primary mt-3">← Back</button>
           </Link>
         </div>
         )

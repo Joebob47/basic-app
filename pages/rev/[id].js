@@ -1,5 +1,6 @@
 import Layout from '../../components/layout';
 import {getAllIds, getData} from '../../lib/data';
+import 'bootstrap/dist/css/bootstrap.css';
 
 //create an instance of getStaticProps to return data for one person
 export async function getStaticProps({ params }) {
@@ -29,11 +30,14 @@ export async function getStaticPaths() {
 //itemData here will be the entire chunk of info for the specific id
 //THIS FORMAT IS CONFUSING TO ME
 export default function Entry({ itemData }) {
+
   let splitData = itemData[0].acf_fields.split(",");
   console.log("THIS IS SPLIT DATA 0: " + splitData[0]);
+
   return (
-      <Layout>
-      <article className="card col-6 mx-auto text-center">
+    
+    <Layout>
+      <article className="card col-6 mx-auto text-center marginTop">
         <h1> {itemData[0].post_title} </h1>
         <div className="card-body">
         <p className="card-text">{itemData[0].post_content}</p>
